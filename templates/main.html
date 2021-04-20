@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Cupcakes{% endblock %}
+
+{% block content %}
+<h1>Cupcakes</h1>
+<ul id='cupcake-list'>
+</ul>
+<hr>
+<h4>Add New Cupcake</h3>
+<form id="cupcake-form" method="POST">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        <p>
+            {{ field.label }}
+            {{ field }}
+
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </p>
+    {% endfor %}
+    <button type="submit">Add</button>
+</form>
+{% endblock %}
